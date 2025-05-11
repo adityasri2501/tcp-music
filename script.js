@@ -101,7 +101,7 @@ document.getElementById('next').addEventListener('click', () => {
     } else {
         songIndex += 1;
     }
-    audioElement.src = `songs/${songIndex}.mp3`;
+    audioElement.src = songs[songIndex].filePath;
     masterSongName.innerText = songs[songIndex].songName;
     audioElement.currentTime = 0;
     audioElement.play();
@@ -116,7 +116,7 @@ document.getElementById('previous').addEventListener('click', () => {
     } else {
         songIndex -= 1;
     }
-    audioElement.src = `songs/${songIndex}.mp3`;
+    audioElement.src = songs[songIndex].filePath;
     masterSongName.innerText = songs[songIndex].songName;
     audioElement.currentTime = 0;
     audioElement.play();
