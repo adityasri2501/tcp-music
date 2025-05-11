@@ -68,10 +68,11 @@ const makeAllPlays = () => {
     });
 }
 
-Array.from(document.getElementsByClassName('songItemPlay')).forEach((element) => {
+Array.from(document.getElementsByClassName('songItemPlay')).forEach((element, index) => {
+    element.id = index;
     element.addEventListener('click', (e) => {
-        console.log(e.target);
         songIndex = parseInt(e.target.id)
+    if(songIndex >= 0 && songIndex < songs.length){
         makeAllPlays();
         e.target.classList.remove('fa-circle-play');
         e.target.classList.add('fa-circle-pause');
@@ -82,6 +83,9 @@ Array.from(document.getElementsByClassName('songItemPlay')).forEach((element) =>
         gif.style.opacity = 1;
         masterPlay.classList.remove('fa-circle-play');
         masterPlay.classList.add('fa-circle-pause');
+    } else {
+        console.error("INVALID SONG INDEX:", songIndex);
+    }
     });
 });
 
